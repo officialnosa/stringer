@@ -12,7 +12,7 @@ class Story < ActiveRecord::Base
   end
 
   def lead
-    strip_html(body)[0, 100]
+    (strip_html(body)||'').split(' ')[0, 20].join(' ')
   end
 
   def source
