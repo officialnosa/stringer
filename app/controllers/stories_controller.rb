@@ -10,7 +10,9 @@ class Stringer < Sinatra::Base
   end
 
   get "/api/stories" do
-    json StoryRepository.unread.to_json
+    content_type :json
+
+    StoryRepository.unread.to_json
   end
   
   get "/feed/:feed_id" do
