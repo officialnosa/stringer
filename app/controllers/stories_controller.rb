@@ -1,6 +1,7 @@
 require "sinatra/json"
 require_relative "../repositories/story_repository"
 require_relative "../commands/stories/mark_all_as_read"
+require_relative "../models/story"
 
 class Stringer < Sinatra::Base
   get "/news" do
@@ -12,7 +13,7 @@ class Stringer < Sinatra::Base
   get "/api/stories" do
     content_type :json
 
-    StoryRepository.unread.to_json
+    Story.all.to_json
   end
   
   get "/feed/:feed_id" do
