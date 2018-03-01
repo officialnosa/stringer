@@ -7,6 +7,17 @@ class Stringer < Sinatra::Base
 
     erb :index
   end
+  
+  namespace '/api ' do
+
+    before do
+      content_type 'application/json'
+    end
+
+    get '/stories' do
+      StoryRepository.unread.to_json
+    end
+  end
 
   get "/feed/:feed_id" do
     @feed = FeedRepository.fetch(params[:feed_id])
