@@ -7,7 +7,7 @@ class Story < ActiveRecord::Base
 
   UNTITLED = "[untitled]".freeze
 
-  scope :newest_first, order(created_at: :desc)
+  scope :newest_first, -> { order(created_at: :desc) } 
 
   def headline
     title.nil? ? UNTITLED : strip_html(title)[0, 50]
