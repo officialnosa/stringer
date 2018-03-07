@@ -13,7 +13,7 @@ class Stringer < Sinatra::Base
   get "/api/stories" do
     content_type :json
 
-    Story.all.to_json
+    Story.newest_first.to_json(except: [:body])
   end
   
   get "/feed/:feed_id" do
