@@ -2,18 +2,37 @@ require "sinatra/json"
 require_relative "../repositories/story_repository"
 require_relative "../commands/stories/mark_all_as_read"
 require_relative "../models/story"
+require_relative "../models/comment"
 
 class Stringer < Sinatra::Base
   get "/news" do
     @unread_stories = StoryRepository.unread
-
+    
     erb :index
   end
-
+  
   get "/api/stories" do
     content_type :json
-
+    
     Story.newest_first.to_json(except: [:body])
+  end
+  
+  get "/api/stories/:id/comments" do
+    content_type :json
+
+    comments = Comment.where(story_id: params[:id]).newest_first.to_json(methods: [:user])
+  end
+  
+  post "/api/stories/:id/comments" do
+    content_type :json
+    request.body.rewind
+    data = JSON.parse(request.body.read, symbolize_names: true)
+    
+    Comment.create(
+                  user_id: data[:user_id],
+                  story_id: params[:id],
+                  body: data[:body]
+                  ).to_json
   end
   
   get "/feed/:feed_id" do
