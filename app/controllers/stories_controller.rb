@@ -14,13 +14,13 @@ class Stringer < Sinatra::Base
   get "/api/stories" do
     content_type :json
     
-    Story.newest_first.to_json(except: [:body])
+    Story.newest_first.to_json(except: [:body]).take(50)
   end
   
   get "/api/stories/:id/comments" do
     content_type :json
 
-    comments = Comment.where(story_id: params[:id]).newest_first.to_json(methods: [:user])
+    comments = Comment.where(story_id: params[:id]).newest_first.to_json(methods: [:user]).take(50)
   end
   
   post "/api/stories/:id/comments" do
