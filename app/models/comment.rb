@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :story
 
-  validates_uniqueness_of :user_id
+  # validates_uniqueness_of :user_id
 
   UNTITLED = "[untitled]".freeze
 
