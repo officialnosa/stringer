@@ -70,7 +70,7 @@ ru:
     import: 
     logout: Выйти
     support: Помощь
-    title: stringer | your rss buddy
+    title: Konfamd Gist | Latest Stories from Top Sources
   partials:
     action_bar:
       add_feed: Добавить фид канал

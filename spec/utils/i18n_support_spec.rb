@@ -21,7 +21,7 @@ describe "i18n" do
 
     it "should load default locale" do
       expect(I18n.locale.to_s).to eq "en"
-      expect(I18n.t("layout.title")).to eq "stringer | your rss buddy"
+      expect(I18n.t("layout.title")).to eq "Konfamd Gist | Latest Stories from Top Sources"
     end
   end
 
@@ -29,7 +29,7 @@ describe "i18n" do
     let(:locale) { "xx" }
 
     it "should not find localization strings" do
-      expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym)).not_to eq "stringer | your rss buddy"
+      expect(I18n.t("layout.title", locale: ENV["LOCALE"].to_sym)).not_to eq "Konfamd Gist | Latest Stories from Top Sources"
     end
   end
 end

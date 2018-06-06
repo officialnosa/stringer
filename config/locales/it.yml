@@ -70,7 +70,7 @@ it:
     import: Importa
     logout: Logout
     support: Supporto
-    title: stringer | your rss buddy
+    title: Konfamd Gist | Latest Stories from Top Sources
   partials:
     action_bar:
       add_feed: Aggiungi un feed

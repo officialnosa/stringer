@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312151048) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20180606155247) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "body"
@@ -37,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180312151048) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "feeds", force: :cascade do |t|
     t.string   "name"
@@ -49,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180312151048) do
     t.integer  "group_id"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",       null: false
@@ -69,9 +66,11 @@ ActiveRecord::Schema.define(version: 20180312151048) do
     t.boolean  "keep_unread", default: false
     t.boolean  "is_starred",  default: false
     t.text     "entry_id"
+    t.text     "image"
+    t.boolean  "featured"
   end
 
-  add_index "stories", ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true, using: :btree
+  add_index "stories", ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "password_digest"

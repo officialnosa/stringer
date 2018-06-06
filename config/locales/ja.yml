@@ -70,7 +70,7 @@ ja:
     import: 読み込み
     logout: ログアウト
     support: サポート
-    title: stringer | your rss buddy
+    title: Konfamd Gist | Latest Stories from Top Sources
   partials:
     action_bar:
       add_feed: フィードを追加する

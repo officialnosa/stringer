@@ -1,8 +1,10 @@
 development:
-  adapter: postgresql
-  database: stringer_dev
-  encoding: unicode
-  pool: 5
+  # adapter: postgresql
+  # database: stringer_dev
+  # encoding: unicode
+  # pool: 5
+  adapter: sqlite3
+  database: db/stringer_dev.sqlite
 
 test:
   adapter: sqlite3

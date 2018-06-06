@@ -1,0 +1,15 @@
+.form .field,
+.form .field.select-dummy {
+  padding-left: 100px;
+  padding-right: 36px;
+}
+form .control-group textarea {
+  width: 210px;
+}
+form .control-group textarea:focus + .field-icon {
+  color: #484948;
+}
+
+form .control-group textarea:focus ~ .field-label {
+  color: #484948;
+}

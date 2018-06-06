@@ -72,4 +72,22 @@ class Stringer < Sinatra::Base
 
     redirect to("/news")
   end
+
+  get "/featured" do
+    @story = Story.where(featured: true).order(created_at: :desc).first or {}
+
+    erb :featured
+  end
+
+  get "/featured/new" do
+    erb :new_featured
+  end
+
+  post "/featured" do
+    story = Story.new(params)
+    story.featured = true
+    story.entry_id = Time.now.to_i
+    story.save
+    redirect to("/featured")
+  end
 end

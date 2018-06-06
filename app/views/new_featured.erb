@@ -1,0 +1,29 @@
+<div id="action-bar">
+  <%= render_partial :feed_action_bar %>
+</div>
+
+<div class="setup" id="feed-setup">
+  <h1>New <span class="orange">Featured</span> Topic</h1>
+
+  <hr />
+
+  <form method="POST" id="login" class="form" action="/featured">
+    <div class="control-group">
+      <input name="title" id="title" class="field" type="text" autofocus />
+      <label id="title-label" class="field-label" for="title">Title</label>
+    </div>
+    <div class="control-group">
+      <input name="permalink" id="permalink" class="field" type="text" />
+      <label id="permalink-label" class="field-label" for="permalink">Story Link</label>
+    </div>
+    <div class="control-group">
+      <textarea name="body" id="body" type="text" class="field" ></textarea>
+      <label id="body-label" class="field-label" for="body">Description</label>
+    </div>
+    <div class="control-group">
+      <input name="image" id="image" type="text" class="field" />
+      <label id="image-label" class="field-label" for="image">Image Url</label>
+    </div>
+    <input type="submit" value="Add" class="btn btn-primary pull-right" />
+  </form>
+</div>
