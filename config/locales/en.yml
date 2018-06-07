@@ -125,8 +125,8 @@ en:
         submit: Login
       flash:
         wrong_password: That's the wrong password. Try again.
-      rss: RSS
-      feed: Feed
+      rss: Gist
+      feed: Gist
       subtitle: Welcome back, friend.
       title: KonfamD
   starred:
