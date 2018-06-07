@@ -12,7 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20180606155247) do
 
-  create_table "comments", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", id: :bigserial, force: :cascade do |t|
     t.string   "body"
     t.integer  "user_id"
     t.integer  "story_id"
@@ -20,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180606155247) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", force: :cascade do |t|
+  create_table "delayed_jobs", id: :bigserial, force: :cascade do |t|
     t.integer  "priority",   default: 0
     t.integer  "attempts",   default: 0
     t.text     "handler"
@@ -34,9 +43,9 @@ ActiveRecord::Schema.define(version: 20180606155247) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "feeds", force: :cascade do |t|
+  create_table "feeds", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.text     "url"
     t.datetime "last_fetched"
@@ -46,15 +55,15 @@ ActiveRecord::Schema.define(version: 20180606155247) do
     t.integer  "group_id"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", id: :bigserial, force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stories", force: :cascade do |t|
+  create_table "stories", id: :bigserial, force: :cascade do |t|
     t.text     "title"
     t.text     "permalink"
     t.text     "body"
@@ -70,9 +79,9 @@ ActiveRecord::Schema.define(version: 20180606155247) do
     t.boolean  "featured"
   end
 
-  add_index "stories", ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true
+  add_index "stories", ["entry_id", "feed_id"], name: "index_stories_on_entry_id_and_feed_id", unique: true, using: :btree
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :bigserial, force: :cascade do |t|
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
